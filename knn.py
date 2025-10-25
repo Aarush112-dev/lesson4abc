@@ -12,16 +12,19 @@ data.info()
 x = data[["sepal_length","sepal_width","petal_length","petal_width"]]
 y = data["species"]
 
-from sklearn.preprocessing import StandardScaler
-ss = StandardScaler()
-x = ss.fit_transform(x)
-print(x)
-""""
+#from sklearn.preprocessing import StandardScalar
+#ss = StandardScaler()
+#x = ss.fit_transform(x)
+
+from sklearn.preprocessing import MinMaxScaler
+mm = MinMaxScaler()
+x = mm.fit_transform(x)
+
 from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.2, random_state= 5)
 
 from sklearn.neighbors import KNeighborsClassifier
-model = KNeighborsClassifier(n_neighbors=3)
+model = KNeighborsClassifier(n_neighbors=11)
 model.fit(x_train,y_train)
 y_pred = model.predict(x_test)
 
@@ -38,4 +41,3 @@ plt.show()
 
 print(classification_report(y_test,y_pred))
 
-"""
